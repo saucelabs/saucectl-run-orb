@@ -39,7 +39,6 @@ parameters:
     description: Suite to be tested
     default: ""
 steps:
-  - install
   - run:
       environment:
         PARAM_SAUCECTL_VERSION: <<parameters.saucectl_version>>
