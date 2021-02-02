@@ -3,6 +3,10 @@
 declare -A platforms=([Darwin]=mac [Linux]=linux [Windows]=win)
 declare -A archs=([i386]=32-bit [x86_64]=64-bit)
 declare -A exts=([mac]=tar.gz [linux]=tar.gz [win]=zip)
+declare ARGS
+
+SAUCECTL_VERSION=
+SAUCECTL_BIN_PATH=
 
 install() {
     src_platform=${1}
@@ -60,34 +64,35 @@ parse_args() {
     fi
 
     if [ -n "${PARAM_CONFIG_FILE}" ];then
-        ARGS+=("-c", "${PARAM_CONFIG_FILE}")
+        ARGS+=("-c" "${PARAM_CONFIG_FILE}")
     fi
 
     if [ -n "${PARAM_REGION}" ];then
-        ARGS+=("--region", "${PARAM_REGION}")
+        ARGS+=("--region" "${PARAM_REGION}")
     fi
 
     if [ -n "${PARAM_TESTING_ENVIRONMENT}" ];then
-        ARGS+=("--test-env", "${PARAM_TESTING_ENVIRONMENT}")
+        ARGS+=("--test-env" "${PARAM_TESTING_ENVIRONMENT}")
     fi
 
     if [ -n "${PARAM_SUITE}" ];then
-        ARGS+=("--suite", "${PARAM_SUITE}")
+        ARGS+=("--suite" "${PARAM_SUITE}")
     fi
 }
 
 run() {
-    ${SAUCECTL_BIN_PATH} run ${args[@]}
+    ${SAUCECTL_BIN_PATH} run ${ARGS[@]}
 }
 
-SAUCECTL_VERSION=
-SAUCECTL_BIN_PATH=
 
-declare ARGS
-
-resolve_version
-install "$(uname -s)" "$(uname -m)" "${SAUCECTL_VERSION}"
-echo "saucectl installed: ${SAUCECTL_BIN_PATH}"
-parse_args
-run
-echo "saucectl: runned"
+# Will not run if sourced for bats.
+# View src/tests for more information.
+TEST_ENV="bats-core"
+if [ "${0#*$TEST_ENV}" == "$0" ]; then
+    resolve_version
+    install "$(uname -s)" "$(uname -m)" "${SAUCECTL_VERSION}"
+    echo "saucectl installed: ${SAUCECTL_BIN_PATH}"
+    parse_args
+    run
+    echo "saucectl: runned"
+fi
