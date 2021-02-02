@@ -34,8 +34,7 @@ install() {
     check_url="https://github.com/saucelabs/saucectl/releases/tag/v${version}"
 
     # Check version existance
-    curl -I -f "${check_url}"  2>&1 > /dev/null
-    if [ ${?} != 0 ];then
+    if curl -I -f "${check_url}" > /dev/null 2>&1;then
         echo "Version v${version} is not available"
         exit 1
     fi
@@ -56,7 +55,7 @@ run() {
 bash --version
 
 SAUCECTL_BIN_PATH=
-install
+install $(uname -s) $(uname -m) v0.26.0
 echo "saucectl installed: ${SAUCECTL_BIN_PATH}"
 run
 
