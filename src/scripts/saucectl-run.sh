@@ -18,7 +18,7 @@ install() {
     
     # Check value
     if [ -z "${platform}" ] || [ -z "${arch}" ]; then
-        echo "Unexpected platform or arch"
+        echo "Unexpected platform (${src_platform} / ${platform}) or arch (${src_arch} / ${arch})"
         exit 1
     fi
 
