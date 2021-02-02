@@ -38,7 +38,8 @@ install() {
 # Check version existence / Resolve latest
 resolve_version() {
     if [ "${PARAM_SAUCECTL_VERSION}" = "latest" ];then
-        SAUCECTL_VERSION=$(curl https://api.github.com/repos/saucelabs/saucectl/releases/latest | jq -r '.name')
+        SAUCECTL_VERSION=$(curl -s https://api.github.com/repos/saucelabs/saucectl/releases/latest | jq -r '.name')
+        SAUCECTL_VERSION=${SAUCECTL_VERSION/v/}
     else
         if [[ "${version}" =~ ^v?([0-9]+)\.([0-9]+)\.([0-9]+)\$ ]]; then
             echo "version: ${version} has an unexpected format"
