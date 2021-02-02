@@ -19,7 +19,7 @@ install() {
         exit 1
     fi
 
-    if [[ "${version}" =~ ^v?([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+    if [[ "${version}" =~ ^v?([0-9]+)\.([0-9]+)\.([0-9]+)\$ ]]; then
         echo "version: ${version} has an unexpected format"
         exit 1
     fi
