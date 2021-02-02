@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 
-declare -A platforms
-declare -A archs
-declare -A exts
-
-platforms=([Darwin]=mac [Linux]=linux [Windows]=win)
-archs=([i386]=32-bits [x86_64]=64-bits)
-exts=([mac]=tar.gz [linux]=tar.gz [win]=zip)
+declare -A platforms=([Darwin]=mac [Linux]=linux [Windows]=win)
+declare -A archs=([i386]=32-bits [x86_64]=64-bits)
+declare -A exts=([mac]=tar.gz [linux]=tar.gz [win]=zip)
 
 install() {
     src_platform=${1}
