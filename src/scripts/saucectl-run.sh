@@ -81,7 +81,7 @@ parse_args() {
 }
 
 run() {
-    ${SAUCECTL_BIN_PATH} run ${ARGS[@]}
+    ${SAUCECTL_BIN_PATH} run "${ARGS[@]}"
 }
 
 
