@@ -37,8 +37,6 @@ install() {
     fi
 
     tmpname=$(mktemp -d)
-    echo ${tmpname}
-    echo ${download_url}
     curl -L -s "${download_url}" | tar -xvz -C "${tmpname}" saucectl || (
         echo "Failed to download / install saucectl"
         exit 1
