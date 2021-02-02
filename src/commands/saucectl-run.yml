@@ -2,23 +2,23 @@ description: >
   This command runs saucectl run.
 
 parameters:
-  saucectl_version:
+  saucectl-version:
     type: string
     default: "latest"
     description: "Version of saucectl to use. Example: v0.25.1"
-  sauce_username:
+  sauce-username:
     type: string
     description: Sauce Labs user name.
     default: ""
-  sauce_access_key:
+  sauce-access-key:
     type: string
     description: Sauce Labs API Key.
     default: ""
-  working_directory:
+  working-directory:
     type: string
     description: Folder in-which saucectl will be run.
     default: .
-  config-_ile:
+  config-file:
     type: string
     description: Configuration file to use with saucectl
     default: .sauce/config.yml
@@ -26,11 +26,11 @@ parameters:
     type: string
     description: Region to pass to saucectl.
     default: ""
-  testing_environment:
+  testing-environment:
     type: string
     description: Testing Environment
     default: docker
-  skip_run:
+  skip-run:
     type: boolean
     description: Skip execution of saucectl (only install binary)
     default: false
@@ -41,14 +41,14 @@ parameters:
 steps:
   - run:
       environment:
-        PARAM_SAUCECTL_VERSION: <<parameters.saucectl_version>>
-        PARAM_SAUCE_USERNAME: <<parameters.sauce_username>>
-        PARAM_SAUCE_ACCESS_KEY: <<parameters.sauce_access_key>>
-        PARAM_WORKING_DIRECTORY: <<parameters.working_directory>>
-        PARAM_CONFIG_FILE: <<parameters.config_file>>
+        PARAM_SAUCECTL_VERSION: <<parameters.saucectl-version>>
+        PARAM_SAUCE_USERNAME: <<parameters.sauce-username>>
+        PARAM_SAUCE_ACCESS_KEY: <<parameters.sauce-access-key>>
+        PARAM_WORKING_DIRECTORY: <<parameters.working-directory>>
+        PARAM_CONFIG_FILE: <<parameters.config-file>>
         PARAM_REGION: <<parameters.region>>
-        PARAM_TESTING_ENVIRONMENT: <<parameters.testing_environment>>
-        PARAM_SKIP_RUN: <<parameters.skip_run>>
+        PARAM_TESTING_ENVIRONMENT: <<parameters.testing-environment>>
+        PARAM_SKIP_RUN: <<parameters.skip-run>>
         PARAM_SUITE: <<parameters.suite>>
       name: run saucectl
       command: <<include(scripts/run.sh)>>
