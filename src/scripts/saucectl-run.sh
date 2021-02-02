@@ -8,19 +8,22 @@
 # PARAM_SKIP_RUN: <<parameters.skip_run>>
 # PARAM_SUITE: <<parameters.suite>>
 
-run() {
+# run() {
 
-    export SAUCE_USERNAME=${PARAM_SAUCE_USERNAME}
-    export SAUCE_ACCESS_KEY=${PARAM_SAUCE_ACCESS_KEY}
+#     export SAUCE_USERNAME=${PARAM_SAUCE_USERNAME}
+#     export SAUCE_ACCESS_KEY=${PARAM_SAUCE_ACCESS_KEY}
 
-    ${SAUCECTL_BINARY} ${}
-    echo Hello "${PARAM_TO}"
-}
+#     ${SAUCECTL_BINARY} ${}
+#     echo Hello "${PARAM_TO}"
+# }
 
-# Will not run if sourced for bats-core tests.
-# View src/tests for more information.
-ORB_TEST_ENV="bats-core"
-if [ "${0#*$ORB_TEST_ENV}" == "$0" ]; then
-    run
-fi
+# # Will not run if sourced for bats-core tests.
+# # View src/tests for more information.
+# ORB_TEST_ENV="bats-core"
+# if [ "${0#*$ORB_TEST_ENV}" == "$0" ]; then
+#     run
+# fi
 
+bash ./install.sh
+
+echo RUN
