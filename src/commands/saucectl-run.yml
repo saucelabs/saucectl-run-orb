@@ -36,7 +36,6 @@ steps:
         PARAM_SAUCECTL_VERSION: <<parameters.saucectl-version>>
         PARAM_SAUCE_USERNAME: <<parameters.sauce-username>>
         PARAM_SAUCE_ACCESS_KEY: <<parameters.sauce-access-key>>
-        PARAM_WORKING_DIRECTORY: <<parameters.working-directory>>
         PARAM_CONFIG_FILE: <<parameters.config-file>>
         PARAM_REGION: <<parameters.region>>
         PARAM_TESTING_ENVIRONMENT: <<parameters.testing-environment>>
