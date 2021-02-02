@@ -51,4 +51,4 @@ steps:
         PARAM_SKIP_RUN: <<parameters.skip-run>>
         PARAM_SUITE: <<parameters.suite>>
       name: run saucectl
-      command: <<include(scripts/run.sh)>>
+      command: <<include(scripts/saucectl-run.sh)>>
