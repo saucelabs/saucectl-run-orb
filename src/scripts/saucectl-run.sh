@@ -55,7 +55,7 @@ run() {
 bash --version
 
 SAUCECTL_BIN_PATH=
-install $(uname -s) $(uname -m) v0.26.0
+install "$(uname -s)" "$(uname -m)" v0.26.0
 echo "saucectl installed: ${SAUCECTL_BIN_PATH}"
 run
 
