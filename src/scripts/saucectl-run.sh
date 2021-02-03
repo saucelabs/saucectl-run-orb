@@ -27,6 +27,7 @@ install() {
     download_url="https://github.com/saucelabs/saucectl/releases/download/v${version}/saucectl_${version}_${platform}_${arch}.${ext}"
 
     tmpname=$(mktemp -d)
+    echo "${download_url}"
     curl -L -s "${download_url}" | tar -xz -C "${tmpname}" saucectl || (
         echo "Failed to download / install saucectl"
         exit 1
@@ -82,6 +83,7 @@ parse_args() {
 }
 
 run() {
+    ls -lRa .
     ${SAUCECTL_BIN_PATH} run "${ARGS[@]}"
 }
 
@@ -91,6 +93,7 @@ run() {
 TEST_ENV="bats-core"
 if [ "${0#*$TEST_ENV}" == "$0" ]; then
     resolve_version
+    echo "${SAUCECTL_VERSION}"
     install "$(uname -s)" "$(uname -m)" "${SAUCECTL_VERSION}"
     echo "saucectl installed: ${SAUCECTL_BIN_PATH}"
     parse_args
