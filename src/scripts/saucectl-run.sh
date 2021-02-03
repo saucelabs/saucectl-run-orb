@@ -82,7 +82,7 @@ parse_args() {
 
     if [ -n "${PARAM_WORKING_DIRECTORY}" ];then
         echo "Changing directory to ${PARAM_WORKING_DIRECTORY}"
-        cd "${PARAM_WORKING_DIRECTORY}"
+        cd "${PARAM_WORKING_DIRECTORY}" || exit 1
     fi
 }
 
