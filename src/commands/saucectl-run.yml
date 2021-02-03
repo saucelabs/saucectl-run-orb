@@ -18,6 +18,10 @@ parameters:
     type: string
     description: Configuration file to use with saucectl
     default: ""
+  working-directory:
+    type: string
+    description: Change directory before running saucectl
+    default: ""
   region:
     type: string
     description: Region to pass to saucectl.
@@ -37,6 +41,7 @@ steps:
         PARAM_SAUCE_USERNAME: <<parameters.sauce-username>>
         PARAM_SAUCE_ACCESS_KEY: <<parameters.sauce-access-key>>
         PARAM_CONFIG_FILE: <<parameters.config-file>>
+        PARAM_WORKING_DIRECTORY: <<parameters.working-directory>>
         PARAM_REGION: <<parameters.region>>
         PARAM_TESTING_ENVIRONMENT: <<parameters.testing-environment>>
         PARAM_SUITE: <<parameters.suite>>
