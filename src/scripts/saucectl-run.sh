@@ -87,6 +87,7 @@ parse_args() {
 }
 
 run() {
+    echo Running ${SAUCECTL_BIN_PATH} run "${ARGS[@]}"
     ${SAUCECTL_BIN_PATH} run "${ARGS[@]}"
 }
 
