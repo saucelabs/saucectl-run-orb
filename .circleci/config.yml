@@ -78,4 +78,4 @@ workflows:
           orb-name: saucelabs/saucectl-run
           publish-version-tag: false
           requires:
-            - integration-test-saucectl
+            - integration-test_saucectl
