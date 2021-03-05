@@ -92,7 +92,7 @@ parse_args() {
 
 run() {
     echo Running "${SAUCECTL_BIN_PATH}" run "${ARGS[@]}"
-    ${SAUCECTL_BIN_PATH} run "${ARGS[@]}" <<# parameters.show-console-log >> --show-console-log <</ parameters.show-console-log >>
+    ${SAUCECTL_BIN_PATH} run "${ARGS[@]}"
 }
 
 
