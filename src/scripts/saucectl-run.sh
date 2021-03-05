@@ -86,6 +86,7 @@ parse_args() {
 
 run() {
     echo Running "${SAUCECTL_BIN_PATH}" run "${ARGS[@]}"
+    echo SAUCE_USERNAME="${SAUCE_USERNAME}"
     ${SAUCECTL_BIN_PATH} run "${ARGS[@]}"
 }
 
