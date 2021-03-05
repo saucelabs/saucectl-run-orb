@@ -79,7 +79,7 @@ parse_args() {
     fi
 
     if [ -n "${PARAM_SHOW_CONSOLE_LOG}" ];then
-        echo "${PARAM_SHOW_CONSOLE_LOG"
+        echo "${PARAM_SHOW_CONSOLE_LOG}"
         ARGS+=("--show-console-log")
     fi
 }
