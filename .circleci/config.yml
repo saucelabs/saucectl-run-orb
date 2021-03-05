@@ -50,6 +50,7 @@ workflows:
     when: << pipeline.parameters.run-integration-tests >>
     jobs:
       - integration-test_saucectl:
+          name: integration-test_saucectl
           docker:
             - image: cimg/base:stable
           steps:
