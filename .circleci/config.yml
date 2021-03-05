@@ -42,7 +42,7 @@ workflows:
           requires:
             - orb-tools/lint
             - orb-tools/pack
-            - shellcheck/check
+            # - shellcheck/check
 
       - orb-tools/publish-dev:
           orb-name: saucelabs/saucectl-run
