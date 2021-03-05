@@ -19,13 +19,22 @@ parameters:
     default: "dev:alpha"
 
 jobs:
-  integration-test-1:
-    docker:
-      - image: cimg/base:stable
-    steps:
+  integration-test_saucectl:
+      jobs:
       - checkout
-      - saucectl/install
-      - saucectl/run
+      - setup_remote_docker:
+          version: 20.10.2
+      - saucectl/saucectl-run:
+          show-console-log: true
+          config-file: ./.sauce/config.yml
+          region: us-west-1
+          working-directory: ./tests/
+      - saucectl/saucectl-run:
+          show-console-log: true
+          config-file: ./.sauce/config.yml
+          region: us-west-1
+          working-directory: ./tests/
+          testing-environment: sauce
 
 workflows:
   test-pack:
@@ -33,16 +42,16 @@ workflows:
     jobs:
       - orb-tools/lint
       - orb-tools/pack
-      # - shellcheck/check:
-      #     dir: ./src/scripts
-      #     exclude: SC2148
+      - shellcheck/check:
+          dir: ./src/scripts
+          exclude: SC2148
 
       - hold-for-dev-publish:
           type: approval
           requires:
             - orb-tools/lint
             - orb-tools/pack
-            # - shellcheck/check
+            - shellcheck/check
 
       - orb-tools/publish-dev:
           orb-name: saucelabs/saucectl-run
@@ -54,3 +63,17 @@ workflows:
           context: orb-publishing
           requires:
             - orb-tools/publish-dev
+
+  integration-test_deploy:
+    when: << pipeline.parameters.run-integration-tests >>
+    jobs:
+      - orb-tools/dev-promote-prod-from-commit-subject:
+          add-pr-comment: false
+          fail-if-semver-not-indicated: true
+          filters:
+            branches:
+              only: master
+          orb-name: saucelabs/saucectl-run
+          publish-version-tag: false
+          requires:
+            - integration-test-saucectl
