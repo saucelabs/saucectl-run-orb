@@ -61,6 +61,7 @@ workflows:
             - orb-tools/publish-dev
 
       - orb-tools/publish:
+          name: publish
           type: approval
           context: orb-publishing
           requires:
