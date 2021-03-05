@@ -59,3 +59,14 @@ workflows:
           context: orb-publishing
           requires:
             - orb-tools/publish-dev
+
+      - orb-tools/publish:
+          type: approval
+          context: orb-publishing
+          requires:
+            - trigger-integration-dev
+          filters:
+            branches:
+              only:
+                - master
+          orb-ref: saucelabs/saucectl-run@<<pipeline.parameters.dev-orb-version>>
