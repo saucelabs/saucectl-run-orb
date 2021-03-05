@@ -84,6 +84,10 @@ parse_args() {
         echo "Changing directory to ${PARAM_WORKING_DIRECTORY}"
         cd "${PARAM_WORKING_DIRECTORY}" || exit 1
     fi
+
+    if [ -n "${PARAM_SHOW_CONSOLE_LOG}" ];then
+        ARGS+=("--show-console-log")
+    fi
 }
 
 run() {

@@ -34,6 +34,10 @@ parameters:
     type: string
     description: Suite to be tested
     default: ""
+  show-console-log:
+    type: string
+    description: Show console log when suite succeed
+    default: ""
 steps:
   - run:
       environment:
@@ -45,5 +49,6 @@ steps:
         PARAM_REGION: <<parameters.region>>
         PARAM_TESTING_ENVIRONMENT: <<parameters.testing-environment>>
         PARAM_SUITE: <<parameters.suite>>
+        PARAM_SHOW_CONSOLE_LOG: <<parameters.show-console-log>>
       name: run saucectl
       command: <<include(scripts/saucectl-run.sh)>>
