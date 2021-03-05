@@ -1,0 +1,27 @@
+apiVersion: v1alpha
+kind: cypress
+showconsolelog: false
+rootDir: "."
+sauce:
+  region: us-west-1
+  metadata:
+    name: Testing Cypress Support
+    tags:
+    - e2e
+    - release team
+    - other tag
+    build: Release $CI_COMMIT_SHORT_SHA
+  concurrency: 1
+cypress:
+  configFile: cypress.json
+  version: 5.6.0
+  record: false
+  key: ""
+suites:
+- name: saucy test
+  browser: chrome
+  config:
+    testFiles:
+    - '**/*.*'
+docker:
+  fileTransfer: copy
