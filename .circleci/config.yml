@@ -19,25 +19,25 @@ parameters:
     default: "dev:alpha"
 
 jobs:
-  - integration-test_saucectl:
-      name: integration-test_saucectl
-      docker:
-        - image: cimg/base:stable
-      steps:
-        - checkout
-        - setup_remote_docker:
-            version: 20.10.2
-        - saucectl/saucectl-run:
-            show-console-log: true
-            config-file: ./.sauce/config.yml
-            region: us-west-1
-            working-directory: ./tests/
-        - saucectl/saucectl-run:
-            show-console-log: true
-            config-file: ./.sauce/config.yml
-            region: us-west-1
-            working-directory: ./tests/
-            testing-environment: sauce
+  integration-test_saucectl:
+    name: integration-test_saucectl
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.2
+      - saucectl/saucectl-run:
+          show-console-log: true
+          config-file: ./.sauce/config.yml
+          region: us-west-1
+          working-directory: ./tests/
+      - saucectl/saucectl-run:
+          show-console-log: true
+          config-file: ./.sauce/config.yml
+          region: us-west-1
+          working-directory: ./tests/
+          testing-environment: sauce
 
 workflows:
   test-pack:
