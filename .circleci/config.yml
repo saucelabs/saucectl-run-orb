@@ -5,15 +5,13 @@ orbs:
   orb-tools: circleci/orb-tools@10.0
   shellcheck: circleci/shellcheck@2.0
 
-# Pipeline Parameters
-## These parameters are used internally by orb-tools. Skip to the Jobs section.
 parameters:
   run-integration-tests:
     description: An internal flag to prevent integration test from running before a development version has been created.
     type: boolean
     default: false
   dev-orb-version:
-    description: >
+    description: |
       The development version of the orb to test.
       This value is automatically adjusted by the "trigger-integration-tests-workflow" job to correspond with the specific version created by the commit and should not be edited.
       A "dev:alpha" version must exist for the initial pipeline run.
@@ -21,7 +19,6 @@ parameters:
     default: "dev:alpha"
 
 jobs:
-  # Define one or more jobs which will utilize your orb's commands and parameters to validate your changes.
   integration-test-1:
     docker:
       - image: cimg/base:stable
@@ -31,8 +28,6 @@ jobs:
       - saucectl/run
 
 workflows:
-  # Prior to producing a development orb (which requires credentials) basic validation, linting, and even unit testing can be performed.
-  # This workflow will run on every commit
   test-pack:
     unless: << pipeline.parameters.run-integration-tests >>
     jobs:
@@ -59,15 +54,3 @@ workflows:
           context: orb-publishing
           requires:
             - orb-tools/publish-dev
-
-      - orb-tools/publish:
-          name: publish
-          type: approval
-          context: orb-publishing
-          requires:
-            - trigger-integration-dev
-          filters:
-            branches:
-              only:
-                - master
-          orb-ref: saucelabs/saucectl-run@<<pipeline.parameters.dev-orb-version>>
