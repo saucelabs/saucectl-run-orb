@@ -20,6 +20,8 @@ parameters:
 
 jobs:
   integration-test_saucectl:
+    docker:
+      - image: cimg/base:stable
     steps:
       - checkout
       - setup_remote_docker:
