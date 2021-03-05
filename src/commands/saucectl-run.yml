@@ -6,14 +6,6 @@ parameters:
     type: string
     default: "latest"
     description: "Version of saucectl to use. Example: v0.25.1"
-  sauce-username:
-    type: string
-    description: Sauce Labs user name.
-    default: ""
-  sauce-access-key:
-    type: string
-    description: Sauce Labs API Key.
-    default: ""
   config-file:
     type: string
     description: Configuration file to use with saucectl
@@ -42,12 +34,11 @@ steps:
   - run:
       environment:
         PARAM_SAUCECTL_VERSION: <<parameters.saucectl-version>>
-        PARAM_SAUCE_USERNAME: <<parameters.sauce-username>>
-        PARAM_SAUCE_ACCESS_KEY: <<parameters.sauce-access-key>>
         PARAM_CONFIG_FILE: <<parameters.config-file>>
         PARAM_WORKING_DIRECTORY: <<parameters.working-directory>>
         PARAM_REGION: <<parameters.region>>
         PARAM_TESTING_ENVIRONMENT: <<parameters.testing-environment>>
         PARAM_SUITE: <<parameters.suite>>
+        PARAM_SHOW_CONSOLE_LOG: <<parameters.show-console-log>>
       name: run saucectl
       command: <<include(scripts/saucectl-run.sh)>>

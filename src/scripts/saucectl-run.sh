@@ -57,13 +57,6 @@ resolve_version() {
 }
 
 parse_args() {
-    if [ -n "${PARAM_SAUCE_USERNAME}" ];then
-        export SAUCE_USERNAME=${PARAM_SAUCE_USERNAME}
-    fi
-    if [ -n "${PARAM_SAUCE_ACCESS_KEY}" ];then
-        export SAUCE_ACCESS_KEY=${PARAM_SAUCE_ACCESS_KEY}
-    fi
-
     if [ -n "${PARAM_CONFIG_FILE}" ];then
         ARGS+=("-c" "${PARAM_CONFIG_FILE}")
     fi
@@ -86,6 +79,7 @@ parse_args() {
     fi
 
     if [ -n "${PARAM_SHOW_CONSOLE_LOG}" ];then
+        echo "${PARAM_SHOW_CONSOLE_LOG"
         ARGS+=("--show-console-log")
     fi
 }
