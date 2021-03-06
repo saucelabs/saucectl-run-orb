@@ -1,8 +1,6 @@
 description: |
   This job runs "saucectl run".
 
-executor: default
-
 parameters:
   saucectl-version:
     type: string
