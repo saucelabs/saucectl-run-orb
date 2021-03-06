@@ -1,6 +1,9 @@
 description: |
   This job runs "saucectl run".
 
+ docker:
+  - image: cimg/base:stable
+
 parameters:
   saucectl-version:
     type: string
