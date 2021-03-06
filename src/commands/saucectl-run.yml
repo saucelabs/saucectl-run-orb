@@ -9,7 +9,7 @@ parameters:
   config-file:
     type: string
     description: Configuration file to use with saucectl
-    default: ""
+    default: ".sauce/config.yml"
   working-directory:
     type: string
     description: Change directory before running saucectl
