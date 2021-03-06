@@ -1,4 +1,4 @@
-description: >
+description: |
   Basic usage of the saucectl-run orb:
 usage:
   version: 2.1
@@ -7,4 +7,4 @@ usage:
   workflows:
     use-saucectl:
       jobs:
-        - saucectl/run
+        - saucectl/saucectl-run
