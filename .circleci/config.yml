@@ -70,7 +70,7 @@ workflows:
     when: << pipeline.parameters.run-integration-tests >>
     jobs:
       - integration-test_saucectl
-      - saucectl/saucectl-run
+      # - saucectl/saucectl-run
       - orb-tools/dev-promote-prod-from-commit-subject:
           add-pr-comment: false
           fail-if-semver-not-indicated: true
@@ -81,4 +81,4 @@ workflows:
           publish-version-tag: false
           requires:
             - integration-test_saucectl
-            - saucectl/saucectl-run
+            # - saucectl/saucectl-run
