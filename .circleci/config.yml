@@ -80,3 +80,4 @@ workflows:
           publish-version-tag: false
           requires:
             - integration-test_saucectl
+            - saucectl/saucectl-run
