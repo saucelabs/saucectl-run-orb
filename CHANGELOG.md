@@ -2,4 +2,4 @@
 
 ## [Unreleased]
 ### Added
-- saucectl orb CircleCI implement
+- saucectl orb CircleCI implementation
