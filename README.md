@@ -52,7 +52,7 @@ jobs:
       - checkout
       - setup_remote_docker:
           version: 20.10.2
-      - saucectl/run
+      - saucectl/saucectl-run
 workflows:
   test_local_and_remote:
     jobs:
