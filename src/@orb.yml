@@ -3,5 +3,5 @@ description: |
   SauceCtl orb allow you to manage simply the task to run with saucectl.
 
 display:
-  home_url: "https://www.saucelabs.com/"
+  home_url: "https://docs.saucelabs.com/testrunner-toolkit/"
   source_url: "https://github.com/saucelabs/saucectl-run-orb/"
