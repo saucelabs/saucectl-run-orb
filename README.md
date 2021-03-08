@@ -7,7 +7,7 @@ saucectl orb provides an easy way to run your [saucectl](https://github.com/sauc
 It can be used as a command, or as a job.\
 Both are called `saucectl-run`.
 
-> You need to have set the following environement variables to be able to run saucectl:
+> You need to have set the following environment variables to be able to run saucectl:
 > - SAUCE_USERNAME
 > - SAUCE_ACCESS_KEY
 
