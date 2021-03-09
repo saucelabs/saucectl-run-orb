@@ -1,5 +1,8 @@
 description: |
-  This command runs "saucectl run".
+  This job runs "saucectl run".
+
+docker:
+  - image: cimg/base:stable
 
 parameters:
   saucectl-version:
@@ -31,6 +34,9 @@ parameters:
     description: Show console log when suite succeed
     default: false
 steps:
+  - checkout
+  - setup_remote_docker:
+      version: 20.10.2
   - run:
       environment:
         PARAM_SAUCECTL_VERSION: <<parameters.saucectl-version>>
