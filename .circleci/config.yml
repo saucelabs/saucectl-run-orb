@@ -76,6 +76,7 @@ workflows:
           region: us-west-1
           working-directory: ./tests/
       - orb-tools/dev-promote-prod-from-commit-subject:
+          context: orb-publishing
           add-pr-comment: false
           fail-if-semver-not-indicated: true
           filters:
