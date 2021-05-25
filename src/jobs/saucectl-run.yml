@@ -33,6 +33,26 @@ parameters:
     type: boolean
     description: Show console log when suite succeed
     default: false
+  env:
+    type: string
+    description:  Environment variables to pass to saucectl
+  sauceignore:
+    type: string
+    description: Path to .sauceignore file
+    default: ""
+  logdir:
+    type: string
+    description: Folder to used to store logdir
+    default: ""
+  timeout:
+    type: string
+    description: Test timeout in seconds
+  tunnel-id:
+    type: string
+    description: Sets the sauce-connect tunnel ID to be used for the run
+  tunnel-parent:
+    type: string
+    description: Sets the sauce-connect tunnel parent to be used for the run
 steps:
   - checkout
   - setup_remote_docker:
@@ -46,5 +66,11 @@ steps:
         PARAM_TESTING_ENVIRONMENT: <<parameters.testing-environment>>
         PARAM_SUITE: <<parameters.suite>>
         PARAM_SHOW_CONSOLE_LOG: <<parameters.show-console-log>>
+        PARAM_ENV: <<parameters.env>>
+        PARAM_SAUCEIGNORE: <<parameters.sauceignore>>
+        PARAM_LOGDIR: <<parameters.logdir>>
+        PARAM_TIMEOUT: <<parameters.timeout>>
+        PARAM_TUNNEL_ID: <<parameters.tunnel-id>>
+        PARAM_TUNNEL_PARENT: <<parameters.tunnel-parent>>
       name: run saucectl
       command: <<include(scripts/saucectl-run.sh)>>

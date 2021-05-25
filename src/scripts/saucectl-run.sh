@@ -79,8 +79,33 @@ parse_args() {
     fi
 
     if [ -n "${PARAM_SHOW_CONSOLE_LOG}" ];then
-        echo "${PARAM_SHOW_CONSOLE_LOG}"
         ARGS+=("--show-console-log")
+    fi
+
+    if [ -n "${PARAM_SAUCEIGNORE}" ];then
+        ARGS+=("--sauceignore" "${PARAM_SAUCEIGNORE}")
+    fi
+
+    if [ -n "${PARAM_ENV}" ];then
+        while read LINE;do
+            ARGS+=("-e" "${LINE}")
+        done <<< ${PARAM_ENV}
+    fi
+
+    if [ -n "${PARAM_LOGDIR}" ];then
+        ARGS+=("--logDir" "${PARAM_LOGDIR}")
+    fi
+
+    if [ -n "${PARAM_TIMEOUT}" ];then
+        ARGS+=("--timeout" "${PARAM_TIMEOUT}")
+    fi
+
+    if [ -n "${PARAM_TUNNEL_ID}" ];then
+        ARGS+=("--tunnel-id" "${PARAM_TUNNEL_ID}")
+    fi
+
+    if [ -n "${PARAM_TUNNEL_PARENT}" ];then
+        ARGS+=("--tunnel-parent" "${PARAM_TUNNEL_PARENT}")
     fi
 }
 
@@ -92,8 +117,7 @@ run() {
 
 # Will not run if sourced for bats.
 # View src/tests for more information.
-TEST_ENV="bats-core"
-if [ "${0#*$TEST_ENV}" == "$0" ]; then
+if [ "${BASH_SOURCE[0]}" == "${0}" ]; then
     resolve_version
     install "$(uname -s)" "$(uname -m)" "${SAUCECTL_VERSION}"
     echo "saucectl installed: ${SAUCECTL_BIN_PATH}"
