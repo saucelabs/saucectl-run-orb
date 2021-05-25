@@ -22,6 +22,11 @@ Both are called `saucectl-run`.
 | testing-environment | Testing Environment | |
 | suite | Suite to be tested | |
 | show-console-log | Show console log when suite succeed | false |
+| env | Environment variable to pass to saucectl | |
+| sauceignore | Sauceignore file to be used | |
+| tunnel-id | Sets the sauce-connect tunnel ID to be used for the run | |
+| tunnel-parent | Sets the sauce-connect tunnel parent to be used for the run | |
+| logdir | Path where to store logs | |
 
 ## Example
 
