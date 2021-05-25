@@ -47,12 +47,15 @@ parameters:
   timeout:
     type: string
     description: Test timeout in seconds
+    default: ""
   tunnel-id:
     type: string
     description: Sets the sauce-connect tunnel ID to be used for the run
+    default: ""
   tunnel-parent:
     type: string
     description: Sets the sauce-connect tunnel parent to be used for the run
+    default: ""
 steps:
   - checkout
   - setup_remote_docker:
