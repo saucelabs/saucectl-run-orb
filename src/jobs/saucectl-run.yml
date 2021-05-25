@@ -36,6 +36,7 @@ parameters:
   env:
     type: string
     description:  Environment variables to pass to saucectl
+    default: ""
   sauceignore:
     type: string
     description: Path to .sauceignore file
