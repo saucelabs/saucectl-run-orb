@@ -58,19 +58,19 @@ resolve_version() {
 
 parse_args() {
     if [ -n "${PARAM_CONFIG_FILE}" ];then
-        ARGS+=("-c" "'${PARAM_CONFIG_FILE}'")
+        ARGS+=("-c" "${PARAM_CONFIG_FILE}")
     fi
 
     if [ -n "${PARAM_REGION}" ];then
-        ARGS+=("--region" "'${PARAM_REGION}'")
+        ARGS+=("--region" "${PARAM_REGION}")
     fi
 
     if [ -n "${PARAM_TESTING_ENVIRONMENT}" ];then
-        ARGS+=("--test-env" "'${PARAM_TESTING_ENVIRONMENT}'")
+        ARGS+=("--test-env" "${PARAM_TESTING_ENVIRONMENT}")
     fi
 
     if [ -n "${PARAM_SUITE}" ];then
-        ARGS+=("--suite" "'${PARAM_SUITE}'")
+        ARGS+=("--suite" "${PARAM_SUITE}")
     fi
 
     if [ -n "${PARAM_WORKING_DIRECTORY}" ];then
@@ -83,31 +83,31 @@ parse_args() {
     fi
 
     if [ -n "${PARAM_SAUCEIGNORE}" ];then
-        ARGS+=("--sauceignore" "'${PARAM_SAUCEIGNORE}'")
+        ARGS+=("--sauceignore" "${PARAM_SAUCEIGNORE}")
     fi
 
     if [ -n "${PARAM_ENV}" ];then
         while read -r LINE;do
             if [ -n "${LINE}" ];then
-                ARGS+=("-e" "'${LINE}'")
+                ARGS+=("-e" "${LINE}")
             fi
         done <<< "${PARAM_ENV}"
     fi
 
     if [ -n "${PARAM_LOGDIR}" ];then
-        ARGS+=("--logDir" "'${PARAM_LOGDIR}'")
+        ARGS+=("--logDir" "${PARAM_LOGDIR}")
     fi
 
     if [ -n "${PARAM_TIMEOUT}" ];then
-        ARGS+=("--timeout" "'${PARAM_TIMEOUT}'")
+        ARGS+=("--timeout" "${PARAM_TIMEOUT}")
     fi
 
     if [ -n "${PARAM_TUNNEL_ID}" ];then
-        ARGS+=("--tunnel-id" "'${PARAM_TUNNEL_ID}'")
+        ARGS+=("--tunnel-id" "${PARAM_TUNNEL_ID}")
     fi
 
     if [ -n "${PARAM_TUNNEL_PARENT}" ];then
-        ARGS+=("--tunnel-parent" "'${PARAM_TUNNEL_PARENT}'")
+        ARGS+=("--tunnel-parent" "${PARAM_TUNNEL_PARENT}")
     fi
 }
 
