@@ -6,7 +6,7 @@ orbs:
   shellcheck: circleci/shellcheck@2.0
 
 parameters:
-  run-integration-tests-new:
+  run-integration-tests:
     description: An internal flag to prevent integration test from running before a development version has been created.
     type: boolean
     default: false
@@ -40,7 +40,7 @@ jobs:
 
 workflows:
   test-pack:
-    unless: << pipeline.parameters.run-integration-tests-new >>
+    # unless: << pipeline.parameters.run-integration-tests >>
     jobs:
       - orb-tools/lint
       - orb-tools/pack
@@ -60,30 +60,30 @@ workflows:
           context: orb-publishing
           requires: [hold-for-dev-publish]
 
-      - orb-tools/trigger-integration-tests-workflow:
-          name: trigger-integration-dev
-          context: orb-publishing
-          requires:
-            - orb-tools/publish-dev
+      # - orb-tools/trigger-integration-tests-workflow:
+      #     name: trigger-integration-dev
+      #     context: orb-publishing
+      #     requires:
+      #       - orb-tools/publish-dev
 
-  integration-test_deploy:
-    when: << pipeline.parameters.run-integration-tests-new >>
-    jobs:
-      - integration-test_saucectl
-      - saucectl/saucectl-run:
-          show-console-log: true
-          config-file: ./.sauce/config.yml
-          region: us-west-1
-          working-directory: ./tests/
-      - orb-tools/dev-promote-prod-from-commit-subject:
-          context: orb-publishing
-          add-pr-comment: false
-          fail-if-semver-not-indicated: true
-          filters:
-            branches:
-              only: master
-          orb-name: saucelabs/saucectl-run
-          publish-version-tag: false
-          requires:
-            - integration-test_saucectl
-            - saucectl/saucectl-run
+  # integration-test_deploy:
+  #   when: << pipeline.parameters.run-integration-tests >>
+  #   jobs:
+  #     - integration-test_saucectl
+  #     - saucectl/saucectl-run:
+  #         show-console-log: true
+  #         config-file: ./.sauce/config.yml
+  #         region: us-west-1
+  #         working-directory: ./tests/
+  #     - orb-tools/dev-promote-prod-from-commit-subject:
+  #         context: orb-publishing
+  #         add-pr-comment: false
+  #         fail-if-semver-not-indicated: true
+  #         filters:
+  #           branches:
+  #             only: master
+  #         orb-name: saucelabs/saucectl-run
+  #         publish-version-tag: false
+  #         requires:
+  #           - integration-test_saucectl
+  #           - saucectl/saucectl-run
