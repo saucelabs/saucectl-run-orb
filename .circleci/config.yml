@@ -66,24 +66,24 @@ workflows:
           requires:
             - orb-tools/publish-dev
 
-  # integration-test_deploy:
-  #   when: << pipeline.parameters.run-integration-tests >>
-  #   jobs:
-  #     - integration-test_saucectl
-  #     - saucectl/saucectl-run:
-  #         show-console-log: true
-  #         config-file: ./.sauce/config.yml
-  #         region: us-west-1
-  #         working-directory: ./tests/
-  #     - orb-tools/dev-promote-prod-from-commit-subject:
-  #         context: orb-publishing
-  #         add-pr-comment: false
-  #         fail-if-semver-not-indicated: true
-  #         filters:
-  #           branches:
-  #             only: master
-  #         orb-name: saucelabs/saucectl-run
-  #         publish-version-tag: false
-  #         requires:
-  #           - integration-test_saucectl
-  #           - saucectl/saucectl-run
+  integration-test_deploy:
+    when: << pipeline.parameters.run-integration-tests >>
+    jobs:
+      - integration-test_saucectl
+      - saucectl/saucectl-run:
+          show-console-log: true
+          config-file: ./.sauce/config.yml
+          region: us-west-1
+          working-directory: ./tests/
+      - orb-tools/dev-promote-prod-from-commit-subject:
+          context: orb-publishing
+          add-pr-comment: false
+          fail-if-semver-not-indicated: true
+          filters:
+            branches:
+              only: master
+          orb-name: saucelabs/saucectl-run
+          publish-version-tag: false
+          requires:
+            - integration-test_saucectl
+            - saucectl/saucectl-run
