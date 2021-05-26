@@ -79,8 +79,35 @@ parse_args() {
     fi
 
     if [ -n "${PARAM_SHOW_CONSOLE_LOG}" ];then
-        echo "${PARAM_SHOW_CONSOLE_LOG}"
         ARGS+=("--show-console-log")
+    fi
+
+    if [ -n "${PARAM_SAUCEIGNORE}" ];then
+        ARGS+=("--sauceignore" "${PARAM_SAUCEIGNORE}")
+    fi
+
+    if [ -n "${PARAM_ENV}" ];then
+        while read -r LINE;do
+            if [ -n "${LINE}" ];then
+                ARGS+=("-e" "${LINE}")
+            fi
+        done <<< "${PARAM_ENV}"
+    fi
+
+    if [ -n "${PARAM_LOGDIR}" ];then
+        ARGS+=("--logDir" "${PARAM_LOGDIR}")
+    fi
+
+    if [ -n "${PARAM_TIMEOUT}" ];then
+        ARGS+=("--timeout" "${PARAM_TIMEOUT}")
+    fi
+
+    if [ -n "${PARAM_TUNNEL_ID}" ];then
+        ARGS+=("--tunnel-id" "${PARAM_TUNNEL_ID}")
+    fi
+
+    if [ -n "${PARAM_TUNNEL_PARENT}" ];then
+        ARGS+=("--tunnel-parent" "${PARAM_TUNNEL_PARENT}")
     fi
 }
 
