@@ -88,7 +88,9 @@ parse_args() {
 
     if [ -n "${PARAM_ENV}" ];then
         while read -r LINE;do
-            ARGS+=("-e" "${LINE}")
+            if [ -n "${LINE}" ];then
+                ARGS+=("-e" "${LINE}")
+            fi
         done <<< "${PARAM_ENV}"
     fi
 
