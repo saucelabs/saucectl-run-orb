@@ -39,7 +39,11 @@ orbs:
 workflows:
   use-saucectl:
     jobs:
-      - saucectl/saucectl-run
+      - saucectl/saucectl-run:
+          env: |
+            MY_VAR1=VALUE
+            MY_VAR2=VALUE
+          show-console-log: true
 
 ```
 
@@ -57,7 +61,11 @@ jobs:
       - checkout
       - setup_remote_docker:
           version: 20.10.2
-      - saucectl/saucectl-run
+      - saucectl/saucectl-run:
+          env: |
+            MY_VAR1=VALUE
+            MY_VAR2=VALUE
+          show-console-log: true
 workflows:
   test_local_and_remote:
     jobs:
