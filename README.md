@@ -24,6 +24,7 @@ Both are called `saucectl-run`.
 | show-console-log | Show console log when suite succeed | false |
 | env | Environment variable to pass to saucectl | |
 | sauceignore | Sauceignore file to be used | |
+| timeout | Test timeout in seconds | |
 | tunnel-id | Sets the sauce-connect tunnel ID to be used for the run | |
 | tunnel-parent | Sets the sauce-connect tunnel parent to be used for the run | |
 | logdir | Path where to store logs | |
