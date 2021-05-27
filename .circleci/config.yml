@@ -81,7 +81,7 @@ workflows:
           fail-if-semver-not-indicated: true
           filters:
             branches:
-              only: master
+              only: main
           orb-name: saucelabs/saucectl-run
           publish-version-tag: false
           requires:
