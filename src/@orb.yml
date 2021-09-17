@@ -1,10 +1,10 @@
 version: 2.1
 description: |
-  Saucectl is a command line interface orchestrates the relationship between
+  saucectl is a command line interface that orchestrates the relationship between
   your tests in your framework, and the rich parallelization, test history
   filtering, and analytics of Sauce Labs.
 
-  Usage requires an Sauce Labs account.
+  Usage requires a Sauce Labs account.
 
 display:
   home_url: "https://docs.saucelabs.com/testrunner-toolkit/"
