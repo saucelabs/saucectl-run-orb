@@ -14,7 +14,7 @@ parameters:
     type: string
     default: ""
     description: "Sauce Labs account's username"
-  sauce-access-ley:
+  sauce-access-key:
     type: string
     default: ""
     description: "Sauce Labs account's access key"
