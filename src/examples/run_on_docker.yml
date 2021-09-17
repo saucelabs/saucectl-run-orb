@@ -23,8 +23,8 @@ usage:
         - setup_remote_docker:
           version: 20.10.7
         - saucectl/saucectl-run:
-          username: my-sauce-username
-          access-key: my-access-key
+          sauce-username: my-sauce-username
+          sauce-access-key: my-access-key
 
   workflows:
     test_on_docker:

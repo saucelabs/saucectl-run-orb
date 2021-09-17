@@ -18,8 +18,8 @@ usage:
       steps:
         - checkout
         - saucectl/saucectl-run:
-            username: my-sauce-username
-            access-key: my-access-key
+            sauce-username: my-sauce-username
+            sauce-access-key: my-access-key
 
   workflows:
     test_on_sauce:
