@@ -10,17 +10,14 @@ description: |
 usage:
   version: 2.1
   orbs:
-    saucectl: saucelabs/saucectl-run@2.0.0
+    saucectl: saucelabs/saucectl-run@1.1.0
   jobs:
     run_saucectl:
       docker:
         - image: cimg/base:stable
       steps:
         - checkout
-        - saucectl/saucectl-run:
-            sauce-username: my-sauce-username
-            sauce-access-key: my-access-key
-
+        - saucectl/saucectl-run
   workflows:
     test_on_sauce:
       jobs:
