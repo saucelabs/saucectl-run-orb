@@ -1,5 +1,5 @@
 description: |
-  This example illustrate how to execute your tests in Docker through
+  This example illustrates how to execute your tests in Docker through
   saucectl.
 
   CircleCI require you to provision a remote docker host in order to be able
