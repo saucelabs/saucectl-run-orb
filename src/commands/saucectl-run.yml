@@ -1,7 +1,9 @@
 description: |
   This command fetches saucectl binary and then execute "saucectl run".
 
-Note: A Sauce Labs account is required. You must set Username and Access Key credentials either through the env variables SAUCE_USERNAME and SAUCE_ACCESS_KEY or using orb parameters in order to execute the command.
+  Note: A Sauce Labs account is required. You must set Username and Access Key
+  credentials either through the env variables SAUCE_USERNAME and
+  SAUCE_ACCESS_KEY or using orb parameters in order to execute the command.
 
 parameters:
   saucectl-version:
