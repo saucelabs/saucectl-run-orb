@@ -1,5 +1,5 @@
 description: |
-  This example illustrate how to execute your tests in Sauce Labs through
+  This example illustrates how to execute your tests in Sauce Labs through
   saucectl.
 
   Note: a Sauce Lab account is required: username and access key need to be
