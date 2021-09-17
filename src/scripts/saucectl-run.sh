@@ -112,6 +112,14 @@ parse_args() {
 }
 
 run() {
+    # Set environment variables if credentials are given through params
+    if [ -n "${PARAM_SAUCE_USERNAME}" ];then
+        export SAUCE_USERNAME=${PARAM_SAUCE_USERNAME}
+    fi
+    if [ -n "${PARAM_SAUCE_ACCESS_KEY}" ];then
+        export SAUCE_ACCESS_KEY=${PARAM_SAUCE_ACCESS_KEY}
+    fi
+
     echo Running "${SAUCECTL_BIN_PATH}" run "${ARGS[@]}"
     ${SAUCECTL_BIN_PATH} run "${ARGS[@]}"
 }

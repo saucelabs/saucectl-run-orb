@@ -1,11 +1,23 @@
 description: |
-  This command runs "saucectl run".
+  This command fetches saucectl binary and then execute "saucectl run".
+
+  Note: a Sauce Lab account is required. Username and access key need to be
+  set in order to make saucectl command to succeed. Credentials can be set
+  using env variables SAUCE_USERNAME and SAUCE_ACCESS_KEY or using orb parameters.
 
 parameters:
   saucectl-version:
     type: string
     default: "latest"
     description: "Version of saucectl to use. Example: v0.25.1"
+  sauce-username:
+    type: string
+    default: ""
+    description: "Sauce Labs account's username"
+  sauce-access-ley:
+    type: string
+    default: ""
+    description: "Sauce Labs account's access key"
   config-file:
     type: string
     description: Configuration file to use with saucectl
@@ -58,6 +70,8 @@ steps:
   - run:
       environment:
         PARAM_SAUCECTL_VERSION: <<parameters.saucectl-version>>
+        PARAM_SAUCE_USERNAME: <<parameters.sauce-username>>
+        PARAM_SAUCE_ACCESS_KEY: <<parameters.sauce-access-key>>
         PARAM_CONFIG_FILE: <<parameters.config-file>>
         PARAM_WORKING_DIRECTORY: <<parameters.working-directory>>
         PARAM_REGION: <<parameters.region>>
