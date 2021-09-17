@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  saucectl: saucelabs/saucectl-run@<<pipeline.parameters.dev-orb-version>>
+  saucectl: saucelabs/saucectl-run@1.1.0
   orb-tools: circleci/orb-tools@10.0
   shellcheck: circleci/shellcheck@2.0
 
