@@ -17,7 +17,7 @@ usage:
         - image: cimg/base:stable
       steps:
         - checkout
-        - saucectl/run:
+        - saucectl/saucectl-run:
             username: my-sauce-username
             access-key: my-access-key
 

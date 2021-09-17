@@ -22,7 +22,7 @@ usage:
         - checkout
         - setup_remote_docker:
           version: 20.10.7
-        - saucectl/run:
+        - saucectl/saucectl-run:
           username: my-sauce-username
           access-key: my-access-key
 
