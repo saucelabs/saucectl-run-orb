@@ -70,11 +70,6 @@ workflows:
     when: << pipeline.parameters.run-integration-tests >>
     jobs:
       - integration-test_saucectl
-      - saucectl/saucectl-run:
-          show-console-log: true
-          config-file: ./.sauce/config.yml
-          region: us-west-1
-          working-directory: ./tests/
       - orb-tools/dev-promote-prod-from-commit-subject:
           context: orb-publishing
           add-pr-comment: false
