@@ -30,11 +30,7 @@ parameters:
     type: string
     description: Region to pass to saucectl.
     default: ""
-  testing-environment:
-    type: string
-    description: Testing Environment
-    default: ""
-  suite:
+  select-suite:
     type: string
     description: Suite to be tested
     default: ""
@@ -58,14 +54,27 @@ parameters:
     type: string
     description: Test timeout in seconds
     default: ""
-  tunnel-id:
+  tunnel-name:
     type: string
     description: Sets the sauce-connect tunnel ID to be used for the run
     default: ""
-  tunnel-parent:
+  tunnel-owner:
     type: string
     description: Sets the sauce-connect tunnel parent to be used for the run
     default: ""
+  ccy:
+    type: string
+    description: Sets the concurrency to be used for the run
+    default: ""
+  retries:
+    type: string
+    description: Sets the number of retries to do for the run
+    default: ""
+  test-env-silent:
+    type: boolean
+    description: Skips the test environment announcement
+    default: false
+
 steps:
   - run:
       environment:
@@ -75,14 +84,16 @@ steps:
         PARAM_CONFIG_FILE: <<parameters.config-file>>
         PARAM_WORKING_DIRECTORY: <<parameters.working-directory>>
         PARAM_REGION: <<parameters.region>>
-        PARAM_TESTING_ENVIRONMENT: <<parameters.testing-environment>>
-        PARAM_SUITE: <<parameters.suite>>
+        PARAM_SUITE: <<parameters.select-suite>>
         PARAM_SHOW_CONSOLE_LOG: <<parameters.show-console-log>>
         PARAM_ENV: <<parameters.env>>
         PARAM_SAUCEIGNORE: <<parameters.sauceignore>>
         PARAM_LOGDIR: <<parameters.logdir>>
         PARAM_TIMEOUT: <<parameters.timeout>>
-        PARAM_TUNNEL_ID: <<parameters.tunnel-id>>
-        PARAM_TUNNEL_PARENT: <<parameters.tunnel-parent>>
+        PARAM_TUNNEL_NAME: <<parameters.tunnel-name>>
+        PARAM_TUNNEL_OWNER: <<parameters.tunnel-owner>>
+        PARAM_CCY: <<parameters.ccy>>
+        PARAM_RETRIES: <<parameters.retries>>
+        PARAM_TEST_ENV_SILENT: <<parameters.test-env-silent>>
       name: run saucectl
       command: <<include(scripts/saucectl-run.sh)>>

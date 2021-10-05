@@ -14,12 +14,19 @@ sauce:
   concurrency: 1
 cypress:
   configFile: cypress.json
-  version: 5.6.0
+  version: 8.3.0
   record: false
   key: ""
 suites:
-- name: saucy test
+- name: saucy test on docker
   browser: chrome
+  mode: docker
+  config:
+    testFiles:
+    - '**/*.*'
+- name: saucy test on sauce
+  browser: chrome
+  mode: sauce
   config:
     testFiles:
     - '**/*.*'
