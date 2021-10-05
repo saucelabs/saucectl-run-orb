@@ -1,0 +1,28 @@
+description: |
+  This example illustrates how to execute your tests in Docker through
+  saucectl.
+
+  CircleCI requires you to provision a remote Docker host in order to be able
+  to execute any Docker container.
+
+  Note: A Sauce Labs account is required. You must set Username and Access Key
+  credentials either through the env variables SAUCE_USERNAME and
+  SAUCE_ACCESS_KEY or using orb parameters in order to execute the command.
+
+usage:
+  version: 2.1
+  orbs:
+    saucectl: saucelabs/saucectl-run@1.1.0
+  jobs:
+    run_saucectl:
+      docker:
+        - image: cimg/base:stable
+      steps:
+        - checkout
+        - setup_remote_docker:
+          version: 20.10.7
+        - saucectl/saucectl-run
+  workflows:
+    test_on_docker:
+      jobs:
+        - run_saucectl

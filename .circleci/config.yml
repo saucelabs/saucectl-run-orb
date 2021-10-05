@@ -31,12 +31,13 @@ jobs:
           config-file: ./.sauce/config.yml
           region: us-west-1
           working-directory: ./tests/
+          select-suite: saucy test on docker
       - saucectl/saucectl-run:
           show-console-log: true
           config-file: ./.sauce/config.yml
           region: us-west-1
           working-directory: ./tests/
-          testing-environment: sauce
+          select-suite: saucy test on sauce
 
 workflows:
   test-pack:
@@ -70,11 +71,6 @@ workflows:
     when: << pipeline.parameters.run-integration-tests >>
     jobs:
       - integration-test_saucectl
-      - saucectl/saucectl-run:
-          show-console-log: true
-          config-file: ./.sauce/config.yml
-          region: us-west-1
-          working-directory: ./tests/
       - orb-tools/dev-promote-prod-from-commit-subject:
           context: orb-publishing
           add-pr-comment: false
@@ -86,4 +82,3 @@ workflows:
           publish-version-tag: false
           requires:
             - integration-test_saucectl
-            - saucectl/saucectl-run

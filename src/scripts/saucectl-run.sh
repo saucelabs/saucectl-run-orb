@@ -65,12 +65,8 @@ parse_args() {
         ARGS+=("--region" "${PARAM_REGION}")
     fi
 
-    if [ -n "${PARAM_TESTING_ENVIRONMENT}" ];then
-        ARGS+=("--test-env" "${PARAM_TESTING_ENVIRONMENT}")
-    fi
-
     if [ -n "${PARAM_SUITE}" ];then
-        ARGS+=("--suite" "${PARAM_SUITE}")
+        ARGS+=("--select-suite" "${PARAM_SUITE}")
     fi
 
     if [ -n "${PARAM_WORKING_DIRECTORY}" ];then
@@ -94,24 +90,44 @@ parse_args() {
         done <<< "${PARAM_ENV}"
     fi
 
-    if [ -n "${PARAM_LOGDIR}" ];then
-        ARGS+=("--logDir" "${PARAM_LOGDIR}")
-    fi
-
     if [ -n "${PARAM_TIMEOUT}" ];then
         ARGS+=("--timeout" "${PARAM_TIMEOUT}")
     fi
 
-    if [ -n "${PARAM_TUNNEL_ID}" ];then
-        ARGS+=("--tunnel-id" "${PARAM_TUNNEL_ID}")
+    if [ -n "${PARAM_TUNNEL_NAME}" ];then
+        ARGS+=("--tunnel-name" "${PARAM_TUNNEL_NAME}")
     fi
 
-    if [ -n "${PARAM_TUNNEL_PARENT}" ];then
-        ARGS+=("--tunnel-parent" "${PARAM_TUNNEL_PARENT}")
+    if [ -n "${PARAM_TUNNEL_OWNER}" ];then
+        ARGS+=("--tunnel-owner" "${PARAM_TUNNEL_OWNER}")
+    fi
+
+    if [ -n "${PARAM_CCY}" ];then
+        ARGS+=("--ccy" "${PARAM_CCY}")
+    fi
+
+    if [ -n "${PARAM_RETRIES}" ];then
+        ARGS+=("--retries" "${PARAM_RETRIES}")
+    fi
+
+    if [ -n "${PARAM_RETRIES}" ];then
+        ARGS+=("--retries" "${PARAM_RETRIES}")
+    fi
+
+    if [ -n "${PARAM_TEST_ENV_SILENT}" ];then
+        ARGS+=("--test-env-silent")
     fi
 }
 
 run() {
+    # Set environment variables if credentials are given through params
+    if [ -n "${PARAM_SAUCE_USERNAME}" ];then
+        export SAUCE_USERNAME=${PARAM_SAUCE_USERNAME}
+    fi
+    if [ -n "${PARAM_SAUCE_ACCESS_KEY}" ];then
+        export SAUCE_ACCESS_KEY=${PARAM_SAUCE_ACCESS_KEY}
+    fi
+
     echo Running "${SAUCECTL_BIN_PATH}" run "${ARGS[@]}"
     ${SAUCECTL_BIN_PATH} run "${ARGS[@]}"
 }

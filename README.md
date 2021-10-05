@@ -11,42 +11,30 @@ Both are called `saucectl-run`.
 > - SAUCE_USERNAME
 > - SAUCE_ACCESS_KEY
 
+Alternatively, you can use the `sauce-username` and `sauce-access-key` parameters of the orb.
+
 ## Parameters
 
 | Parameter name | Description | Default value |
 | --- | --- | --- |
-| saucectl-version | Version of saucectl to use. Example: v0.25.1 | `latest` |
+| sauce-username | Sauce Username to use for authentification | |
+| sauce-access-key | Sauce Access Key to use for authentification | |
+| saucectl-version | Version of saucectl to use. Example: v0.68.2 | `latest` |
 | config-file | Configuration file to use with saucectl | `.sauce/config.yml` |
 | working-directory | Working directory to use when running saucectl | `.` | 
 | region | Region to pass to saucectl | |
-| testing-environment | Testing Environment | |
-| suite | Suite to be tested | |
+| select-suite | Run a particular suite instead of all | |
 | show-console-log | Show console log when suite succeed | false |
 | env | Environment variable to pass to saucectl | |
 | sauceignore | Sauceignore file to be used | |
 | timeout | Test timeout in seconds | |
-| tunnel-id | Sets the sauce-connect tunnel ID to be used for the run | |
-| tunnel-parent | Sets the sauce-connect tunnel parent to be used for the run | |
-| logdir | Path where to store logs | |
+| tunnel-name | Sets the sauce-connect tunnel name to be used for the run | |
+| tunnel-owner | Sets the sauce-connect tunnel owner to be used for the run | |
+| ccy | Sets the concurrency to be used for the run | |
+| retries | ets the number of retries to do for the run | |
+| test-env-silent | Skips the test environment announcement | false |
 
 ## Example
-
-### job
-
-```
-version: 2.1
-orbs:
-  saucectl: saucelabs/saucectl@1.0.0
-workflows:
-  use-saucectl:
-    jobs:
-      - saucectl/saucectl-run:
-          env: |
-            MY_VAR1=VALUE
-            MY_VAR2=VALUE
-          show-console-log: true
-
-```
 
 ### command
 

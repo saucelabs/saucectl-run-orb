@@ -1,6 +1,10 @@
 version: 2.1
 description: |
-  SauceCtl orb allow you to manage simply the task to run with saucectl.
+  saucectl is a command line interface that orchestrates the relationship between
+  your tests in your framework, and the rich parallelization, test history
+  filtering, and analytics of Sauce Labs.
+
+  Usage requires a Sauce Labs account.
 
 display:
   home_url: "https://docs.saucelabs.com/testrunner-toolkit/"

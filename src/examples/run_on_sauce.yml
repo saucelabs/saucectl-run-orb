@@ -1,0 +1,23 @@
+description: |
+  This example illustrates how to execute your tests in Sauce Labs through
+  saucectl.
+
+  Note: A Sauce Labs account is required. You must set Username and Access Key
+  credentials either through the env variables SAUCE_USERNAME and
+  SAUCE_ACCESS_KEY or using orb parameters in order to execute the command.
+
+usage:
+  version: 2.1
+  orbs:
+    saucectl: saucelabs/saucectl-run@1.1.0
+  jobs:
+    run_saucectl:
+      docker:
+        - image: cimg/base:stable
+      steps:
+        - checkout
+        - saucectl/saucectl-run
+  workflows:
+    test_on_sauce:
+      jobs:
+        - run_saucectl
