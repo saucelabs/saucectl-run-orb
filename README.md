@@ -11,7 +11,7 @@ Both are called `saucectl-run`.
 > - SAUCE_USERNAME
 > - SAUCE_ACCESS_KEY
 
-Alternativement, you can use `sauce-username` and `sauce-access-key` parameters of the orb.
+Alternatively, you can use the `sauce-username` and `sauce-access-key` parameters of the orb.
 
 ## Parameters
 
