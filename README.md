@@ -23,7 +23,7 @@ Alternatively, you can use the `sauce-username` and `sauce-access-key` parameter
 | config-file | Configuration file to use with saucectl | `.sauce/config.yml` |
 | working-directory | Working directory to use when running saucectl | `.` | 
 | region | Region to pass to saucectl | |
-| select-suite | Suite to be executed | |
+| select-suite | Run a particular suite instead of all | |
 | show-console-log | Show console log when suite succeed | false |
 | env | Environment variable to pass to saucectl | |
 | sauceignore | Sauceignore file to be used | |
