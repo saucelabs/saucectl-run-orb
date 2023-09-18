@@ -41,7 +41,7 @@ Alternatively, you can use the `sauce-username` and `sauce-access-key` parameter
 ```
 version: 2.1
 orbs:
-  saucectl: saucelabs/saucectl-run@1.2.0
+  saucectl: saucelabs/saucectl-run@3.0.0
 jobs:
   run_saucectl:
     docker:

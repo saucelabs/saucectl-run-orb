@@ -1,8 +1,14 @@
 # Changelog
 
-## v2.0.0 - 09/18/2023
+## v3.0.0 - 9/18/2023
 ### Added
-- Support CircleCI latest CI config.
+- Integration of the latest orb configuration files, including `config.yml` and `test-deploy.yml`.
+- Removal of saucectl Docker configuration and related documentation.
+- Updated the saucectl test example.
+
+## v2.0.0 - 10/05/2021
+### Added
+- Refined parameters.
 
 ## v1.1.0 - 5/26/2021
 ### Added
