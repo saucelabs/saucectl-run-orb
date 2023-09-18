@@ -3,7 +3,9 @@
 ## v3.0.0 - 9/18/2023
 ### Added
 - Integration of the latest orb configuration files, including `config.yml` and `test-deploy.yml`.
-- Removal of saucectl Docker configuration and related documentation.
+### Removed
+- saucectl Docker configuration and related documentation.
+### Updated
 - Updated the saucectl test example.
 
 ## v2.0.0 - 10/05/2021
