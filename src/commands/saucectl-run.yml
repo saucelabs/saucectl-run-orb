@@ -9,66 +9,66 @@ parameters:
   saucectl-version:
     type: string
     default: "latest"
-    description: "Version of saucectl to use. Example: v0.25.1"
+    description: "Version of saucectl to use. Example: v0.25.1."
   sauce-username:
     type: string
     default: ""
-    description: "Sauce Labs account's username"
+    description: "Sauce Labs account's username."
   sauce-access-key:
     type: string
     default: ""
-    description: "Sauce Labs account's access key"
+    description: "Sauce Labs account's access key."
   config-file:
     type: string
-    description: Configuration file to use with saucectl
+    description: Configuration file to use with saucectl.
     default: ".sauce/config.yml"
   working-directory:
     type: string
-    description: Change directory before running saucectl
+    description: Change directory before running saucectl.
     default: ""
   region:
     type: string
-    description: Region to pass to saucectl.
-    default: ""
+    description: Specifies the Sauce Labs data center through which tests will run. Valid values are us-west-1 (default) or eu-central-1.
+    default: "us-west-1"
   select-suite:
     type: string
-    description: Suite to be tested
+    description: Suite to be tested.
     default: ""
   show-console-log:
     type: boolean
-    description: Show console log when suite succeed
+    description: Show console log when suite succeed.
     default: false
   env:
     type: string
-    description:  Environment variables to pass to saucectl
+    description:  Environment variables to pass to saucectl.
     default: ""
   sauceignore:
     type: string
-    description: Path to .sauceignore file
+    description: Path to .sauceignore file.
     default: ""
   timeout:
     type: string
-    description: Test timeout in seconds
+    description: Test timeout in seconds.
     default: ""
   tunnel-name:
     type: string
-    description: Sets the sauce-connect tunnel ID to be used for the run
+    description: Sets the sauce-connect tunnel ID to be used for the run.
     default: ""
   tunnel-owner:
     type: string
-    description: Sets the sauce-connect tunnel parent to be used for the run
+    description: Sets the sauce-connect tunnel parent to be used for the run.
     default: ""
   ccy:
     type: string
-    description: Sets the concurrency to be used for the run
+    description: Sets the concurrency to be used for the run.
     default: ""
   retries:
     type: string
-    description: Sets the number of retries to do for the run
+    description: Sets the number of retries to do for the run.
     default: ""
   test-env-silent:
     type: boolean
-    description: Skips the test environment announcement
+    description: Skips the test environment announcement.
     default: false
 
 steps:
