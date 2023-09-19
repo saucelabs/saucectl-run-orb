@@ -1,34 +1,15 @@
-apiVersion: v1alpha
+apiVersion: v1
 kind: cypress
-showconsolelog: false
-rootDir: "."
 sauce:
   region: us-west-1
-  metadata:
-    name: Testing Cypress Support
-    tags:
-    - e2e
-    - release team
-    - other tag
-    build: Release $CI_COMMIT_SHORT_SHA
-  concurrency: 1
+  concurrency: 2
 cypress:
-  configFile: cypress.json
-  version: 8.3.0
-  record: false
-  key: ""
+  version: 12.17.4
+  configFile: "cypress.config.js"
+rootDir: ./
 suites:
-- name: saucy test on docker
-  browser: chrome
-  mode: docker
-  config:
-    testFiles:
-    - '**/*.*'
-- name: saucy test on sauce
-  browser: chrome
-  mode: sauce
-  config:
-    testFiles:
-    - '**/*.*'
-docker:
-  fileTransfer: copy
+  - name: "saucy test on sauce"
+    browser: "chrome"
+    platformName: "Windows 11"
+    config:
+      specPattern: [ "cypress/e2e/**/*.*" ]

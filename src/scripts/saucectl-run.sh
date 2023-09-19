@@ -136,7 +136,7 @@ run() {
 # Will not run if sourced for bats.
 # View src/tests for more information.
 TEST_ENV="bats-core"
-if [ "${0#*$TEST_ENV}" == "$0" ]; then
+if [ "${0#*"$TEST_ENV"}" == "$0" ]; then
     resolve_version
     install "$(uname -s)" "$(uname -m)" "${SAUCECTL_VERSION}"
     echo "saucectl installed: ${SAUCECTL_BIN_PATH}"

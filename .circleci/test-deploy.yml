@@ -1,0 +1,45 @@
+version: 2.1
+orbs:
+  orb-tools: circleci/orb-tools@12.0
+  saucectl: saucelabs/saucectl-run@dev:<<pipeline.git.revision>>
+
+filters: &filters
+  tags:
+    only: /.*/
+
+release-filters: &release-filters
+  branches:
+    ignore: /.*/
+  tags:
+    only: /^v[0-9]+\.[0-9]+\.[0-9]+$/
+
+jobs:
+  integration-test_saucectl:
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - checkout
+      - saucectl/saucectl-run:
+          show-console-log: true
+          config-file: ./.sauce/config.yml
+          region: us-west-1
+          working-directory: ./tests/
+          select-suite: saucy test on sauce
+workflows:
+  version: 2
+  test-deploy:
+    jobs:
+      - integration-test_saucectl:
+          filters: *filters
+      - orb-tools/pack:
+          filters: *release-filters
+      - orb-tools/publish:
+          orb_name: saucelabs/saucectl-run
+          vcs_type: << pipeline.project.type >>
+          pub_type: production
+          enable_pr_comment: true
+          requires:
+            - orb-tools/pack
+            - integration-test_saucectl
+          context: circleci-orb-publishing
+          filters: *release-filters
