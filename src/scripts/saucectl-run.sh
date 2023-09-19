@@ -117,6 +117,10 @@ parse_args() {
     if [ -n "${PARAM_TEST_ENV_SILENT}" ];then
         ARGS+=("--test-env-silent")
     fi
+
+    if [ -n "${PARAM_ASYNC}" ];then
+        ARGS+=("--async")
+    fi
 }
 
 run() {

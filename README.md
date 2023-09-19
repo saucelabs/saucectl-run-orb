@@ -32,7 +32,8 @@ Alternatively, you can use the `sauce-username` and `sauce-access-key` parameter
 | tunnel-owner | Sets the sauce-connect tunnel owner to be used for the run | |
 | ccy | Sets the concurrency to be used for the run | |
 | retries | Sets the number of retries to do for the run | |
-| test-env-silent | Skips the test environment announcement | false |
+| test-env-silent | Skips the test environment announcement | `false` |
+| async | Launches tests without awaiting outcomes; operates in a fire-and-forget manner | `false` |
 
 ## Example
 
