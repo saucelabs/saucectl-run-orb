@@ -1,8 +1,9 @@
 # Changelog
 
-## v3.0.0 - 9/18/2023
+## v3.0.0 - 9/19/2023
 ### Added
 - Integration of the latest orb configuration files, including `config.yml` and `test-deploy.yml`.
+- Support for `async` params.
 ### Removed
 - saucectl Docker configuration and related documentation.
 ### Updated
