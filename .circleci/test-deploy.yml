@@ -20,10 +20,14 @@ jobs:
     steps:
       - checkout
       - saucectl/saucectl-run:
-          async: true
           show-console-log: true
           config-file: ./.sauce/config.yml
           region: us-west-1
+          working-directory: ./tests/
+          select-suite: saucy test on sauce
+      - saucectl/saucectl-run:
+          async: true
+          config-file: ./.sauce/config.yml
           working-directory: ./tests/
           select-suite: saucy test on sauce
 workflows:
