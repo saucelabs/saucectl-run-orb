@@ -70,6 +70,10 @@ parameters:
     type: boolean
     description: Skips the test environment announcement.
     default: false
+  async:
+    type: boolean
+    description: Launches tests without awaiting outcomes; operates in a fire-and-forget manner.
+    default: false
 
 steps:
   - run:
@@ -90,5 +94,6 @@ steps:
         PARAM_CCY: <<parameters.ccy>>
         PARAM_RETRIES: <<parameters.retries>>
         PARAM_TEST_ENV_SILENT: <<parameters.test-env-silent>>
+        PARAM_ASYNC: <<parameters.async>>
       name: run saucectl
       command: <<include(scripts/saucectl-run.sh)>>

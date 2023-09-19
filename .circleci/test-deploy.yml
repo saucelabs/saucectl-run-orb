@@ -20,6 +20,7 @@ jobs:
     steps:
       - checkout
       - saucectl/saucectl-run:
+          async: true
           show-console-log: true
           config-file: ./.sauce/config.yml
           region: us-west-1
