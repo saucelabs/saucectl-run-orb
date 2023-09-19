@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   orb-tools: circleci/orb-tools@12.0
-  saucectl: saucelabs/saucectl-run@dev:<<pipeline.git.revision>>
+  saucectl: {}
 
 filters: &filters
   tags:
