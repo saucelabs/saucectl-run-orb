@@ -28,7 +28,7 @@ parameters:
     default: ""
   region:
     type: string
-    description: Specifies the Sauce Labs data center through which tests will run. Valid values are us-west-1 (default) or eu-central-1.
+    description: Specifies the Sauce Labs data center through which tests will run. Valid values are us-west-1 or eu-central-1.
     default: ""
   select-suite:
     type: string
