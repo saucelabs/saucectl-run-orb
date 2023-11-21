@@ -27,6 +27,7 @@ jobs:
           select-suite: saucy test on sauce
       - saucectl/saucectl-run:
           async: true
+          region: us-west-1
           config-file: ./.sauce/config.yml
           working-directory: ./tests/
           select-suite: saucy test on sauce
