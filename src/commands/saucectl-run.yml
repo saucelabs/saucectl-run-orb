@@ -40,7 +40,7 @@ parameters:
     default: false
   env:
     type: string
-    description:  Environment variables to pass to saucectl.
+    description: Environment variables to pass to saucectl.
     default: ""
   sauceignore:
     type: string
@@ -57,6 +57,10 @@ parameters:
   tunnel-owner:
     type: string
     description: Sets the sauce-connect tunnel parent to be used for the run.
+    default: ""
+  tunnel-timeout:
+    type: string
+    description: How long to wait for the specified tunnel to be ready. Supports duration values like '10s', '30m' etc.
     default: ""
   ccy:
     type: string
@@ -91,6 +95,7 @@ steps:
         PARAM_TIMEOUT: <<parameters.timeout>>
         PARAM_TUNNEL_NAME: <<parameters.tunnel-name>>
         PARAM_TUNNEL_OWNER: <<parameters.tunnel-owner>>
+        PARAM_TUNNEL_TIMEOUT: <<parameters.tunnel-timeout>>
         PARAM_CCY: <<parameters.ccy>>
         PARAM_RETRIES: <<parameters.retries>>
         PARAM_TEST_ENV_SILENT: <<parameters.test-env-silent>>
