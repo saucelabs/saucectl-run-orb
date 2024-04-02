@@ -15,7 +15,7 @@ install() {
 
     platform=${platforms[$src_platform]}
     arch=${archs[$src_arch]}
-    
+
     # Check value
     if [ -z "${platform}" ] || [ -z "${arch}" ]; then
         echo "Unexpected platform (${src_platform} / ${platform}) or arch (${src_arch} / ${arch})"
@@ -100,6 +100,10 @@ parse_args() {
 
     if [ -n "${PARAM_TUNNEL_OWNER}" ];then
         ARGS+=("--tunnel-owner" "${PARAM_TUNNEL_OWNER}")
+    fi
+
+    if [ -n "${PARAM_TUNNEL_TIMEOUT}" ];then
+        ARGS+=("--tunnel-timeout" "${PARAM_TUNNEL_TIMEOUT}")
     fi
 
     if [ -n "${PARAM_CCY}" ];then
