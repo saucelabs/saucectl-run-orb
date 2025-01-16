@@ -75,7 +75,7 @@ parse_args() {
     fi
 
     if [ -n "${PARAM_SHOW_CONSOLE_LOG}" ];then
-        ARGS+=("--show-console-log")
+        ARGS+=("--show-console-log" "${PARAM_SHOW_CONSOLE_LOG}")
     fi
 
     if [ -n "${PARAM_SAUCEIGNORE}" ];then
@@ -114,16 +114,12 @@ parse_args() {
         ARGS+=("--retries" "${PARAM_RETRIES}")
     fi
 
-    if [ -n "${PARAM_RETRIES}" ];then
-        ARGS+=("--retries" "${PARAM_RETRIES}")
-    fi
-
     if [ -n "${PARAM_TEST_ENV_SILENT}" ];then
         ARGS+=("--test-env-silent")
     fi
 
     if [ -n "${PARAM_ASYNC}" ];then
-        ARGS+=("--async")
+        ARGS+=("--async" "${PARAM_SHOW_CONSOLE_LOG}")
     fi
 }
 
@@ -147,8 +143,8 @@ TEST_ENV="bats-core"
 if [ "${0#*"$TEST_ENV"}" == "$0" ]; then
     resolve_version
     install "$(uname -s)" "$(uname -m)" "${SAUCECTL_VERSION}"
-    echo "saucectl installed: ${SAUCECTL_BIN_PATH}"
+    echo "saucectl installed at: ${SAUCECTL_BIN_PATH}"
     parse_args
     run
-    echo "saucectl: runned"
+    echo "saucectl test completed"
 fi
