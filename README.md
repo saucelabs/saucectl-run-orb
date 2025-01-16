@@ -18,8 +18,8 @@ Alternatively, you can use the `sauce-username` and `sauce-access-key` parameter
 
 | Parameter name    | Description                                                                    | Default value       |
 | ----------------- | ------------------------------------------------------------------------------ | ------------------- |
-| sauce-username    | Sauce Username to use for authentication                                     |                     |
-| sauce-access-key  | Sauce Access Key to use for authentication                                   |                     |
+| sauce-username    | Sauce Username to use for authentication                                       |                     |
+| sauce-access-key  | Sauce Access Key to use for authentication                                     |                     |
 | saucectl-version  | Version of saucectl to use. Example: v0.68.2                                   | `latest`            |
 | config-file       | Configuration file to use with saucectl                                        | `.sauce/config.yml` |
 | working-directory | Working directory to use when running saucectl                                 | `.`                 |

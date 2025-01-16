@@ -74,8 +74,8 @@ parse_args() {
         cd "${PARAM_WORKING_DIRECTORY}" || exit 1
     fi
 
-    if [ -n "${PARAM_SHOW_CONSOLE_LOG}" ];then
-        ARGS+=("--show-console-log" "${PARAM_SHOW_CONSOLE_LOG}")
+    if [ "${PARAM_SHOW_CONSOLE_LOG}" == "true" ]; then
+        ARGS+=("--show-console-log")
     fi
 
     if [ -n "${PARAM_SAUCEIGNORE}" ];then
@@ -114,8 +114,8 @@ parse_args() {
         ARGS+=("--retries" "${PARAM_RETRIES}")
     fi
 
-    if [ -n "${PARAM_ASYNC}" ];then
-        ARGS+=("--async" "${PARAM_SHOW_CONSOLE_LOG}")
+    if [ "${PARAM_ASYNC}" == "true" ]; then
+        ARGS+=("--async")
     fi
 }
 
