@@ -114,7 +114,7 @@ parse_args() {
         ARGS+=("--retries" "${PARAM_RETRIES}")
     fi
 
-    if [ "${PARAM_ASYNC}" == "true" ]; then
+    if [ "${PARAM_ASYNC}" == "true" ];then
         ARGS+=("--async")
     fi
 }

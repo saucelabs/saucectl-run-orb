@@ -70,10 +70,6 @@ parameters:
     type: string
     description: Sets the number of retries to do for the run.
     default: ""
-  test-env-silent:
-    type: boolean
-    description: Skips the test environment announcement.
-    default: false
   async:
     type: boolean
     description: Launches tests without awaiting outcomes; operates in a fire-and-forget manner.
