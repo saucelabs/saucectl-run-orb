@@ -74,10 +74,7 @@ parse_args() {
         cd "${PARAM_WORKING_DIRECTORY}" || exit 1
     fi
 
-    if [ -n "${PARAM_SHOW_CONSOLE_LOG}" ];then
-        ARGS+=("--show-console-log")
-    fi
-
+    
     if [ -n "${PARAM_SAUCEIGNORE}" ];then
         ARGS+=("--sauceignore" "${PARAM_SAUCEIGNORE}")
     fi
@@ -114,15 +111,18 @@ parse_args() {
         ARGS+=("--retries" "${PARAM_RETRIES}")
     fi
 
-    if [ -n "${PARAM_RETRIES}" ];then
-        ARGS+=("--retries" "${PARAM_RETRIES}")
-    fi
-
+    # For backward compatibility, we can't remove the field directly,
+    # as it could break the customer's pipeline if it has already been set.
     if [ -n "${PARAM_TEST_ENV_SILENT}" ];then
-        ARGS+=("--test-env-silent")
+        echo "WARNING: 'test-env-silent' is deprecated. Please remove it from your configuration."
     fi
 
-    if [ -n "${PARAM_ASYNC}" ];then
+    # Boolean types set in CircleCI's config are parsed as 0/1 when converted to environment variables.
+    if [ "${PARAM_SHOW_CONSOLE_LOG}" == "1" ]; then
+        ARGS+=("--show-console-log")
+    fi
+
+    if [ "${PARAM_ASYNC}" == "1" ];then
         ARGS+=("--async")
     fi
 }
@@ -147,8 +147,8 @@ TEST_ENV="bats-core"
 if [ "${0#*"$TEST_ENV"}" == "$0" ]; then
     resolve_version
     install "$(uname -s)" "$(uname -m)" "${SAUCECTL_VERSION}"
-    echo "saucectl installed: ${SAUCECTL_BIN_PATH}"
+    echo "saucectl installed at: ${SAUCECTL_BIN_PATH}"
     parse_args
     run
-    echo "saucectl: runned"
+    echo "saucectl test completed"
 fi

@@ -4,7 +4,7 @@ sauce:
   region: us-west-1
   concurrency: 2
 cypress:
-  version: 12.17.4
+  version: 13.16.0
   configFile: "cypress.config.js"
 rootDir: ./
 suites:
