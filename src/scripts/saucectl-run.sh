@@ -115,6 +115,7 @@ parse_args() {
         ARGS+=("--retries" "${PARAM_RETRIES}")
     fi
 
+    # Boolean environment variables are parsed as 0 or 1.
     if [ "${PARAM_ASYNC}" == "1" ];then
         ARGS+=("--async")
     fi
