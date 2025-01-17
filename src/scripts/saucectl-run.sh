@@ -74,7 +74,8 @@ parse_args() {
         cd "${PARAM_WORKING_DIRECTORY}" || exit 1
     fi
 
-    if [ "${PARAM_SHOW_CONSOLE_LOG}" == "true" ]; then
+    # Boolean environment variables are parsed as 0 or 1.
+    if [ "${PARAM_SHOW_CONSOLE_LOG}" == "1" ]; then
         ARGS+=("--show-console-log")
     fi
 
@@ -114,7 +115,7 @@ parse_args() {
         ARGS+=("--retries" "${PARAM_RETRIES}")
     fi
 
-    if [ "${PARAM_ASYNC}" == "true" ];then
+    if [ "${PARAM_ASYNC}" == "1" ];then
         ARGS+=("--async")
     fi
 }
