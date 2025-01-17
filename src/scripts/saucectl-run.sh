@@ -74,11 +74,7 @@ parse_args() {
         cd "${PARAM_WORKING_DIRECTORY}" || exit 1
     fi
 
-    # Boolean environment variables are parsed as 0 or 1.
-    if [ "${PARAM_SHOW_CONSOLE_LOG}" == "1" ]; then
-        ARGS+=("--show-console-log")
-    fi
-
+    
     if [ -n "${PARAM_SAUCEIGNORE}" ];then
         ARGS+=("--sauceignore" "${PARAM_SAUCEIGNORE}")
     fi
@@ -115,11 +111,17 @@ parse_args() {
         ARGS+=("--retries" "${PARAM_RETRIES}")
     fi
 
+    # For backward compatibility, we can't remove the field directly,
+    # as it could break the customer's pipeline if it has already been set.
     if [ -n "${PARAM_TEST_ENV_SILENT}" ];then
         echo "WARNING: 'test-env-silent' is deprecated. Please remove it from your configuration."
     fi
 
-    # Boolean environment variables are parsed as 0 or 1.
+    # Boolean types set in CircleCI's config are parsed as 0/1 when converted to environment variables.
+    if [ "${PARAM_SHOW_CONSOLE_LOG}" == "1" ]; then
+        ARGS+=("--show-console-log")
+    fi
+
     if [ "${PARAM_ASYNC}" == "1" ];then
         ARGS+=("--async")
     fi
